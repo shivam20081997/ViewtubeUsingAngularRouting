@@ -1,0 +1,14 @@
+<h1>Register</h1>
+
+
+<input [(ngModel)]="user.username" placeholder="Name">
+<br>
+<input [(ngModel)]="user.password" placeholder="Password">
+<br>
+<br>
+<input type="checkbox" name="livestream" value="livestream">
+<label for="livestream">Allow Scheduling LiveStream</label><br>
+<br>
+<button (click)="register()">Register</button>
+
+

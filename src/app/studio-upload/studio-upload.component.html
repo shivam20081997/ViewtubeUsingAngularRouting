@@ -1,0 +1,47 @@
+
+<div class="main">
+  
+    <form [formGroup]="studioUploadForm" (ngSubmit)="onSubmit()">
+            
+      <label for="videourl">Video URL</label>
+      <input id="videourl" type="text" formControlName="videourl">
+
+      <div formGroupName="event">
+
+      <label for="videotitle">Video Title</label>
+      <input id="videotitle" type="text" formControlName="videotitle">
+
+      <label for="videodescription">Video Description</label>
+      <input id="videodescription" type="text" formControlName="videodescription">
+
+      <label for="videoduration">Video Duration</label>
+      <input id="videoduration"type="text" formControlName="videoduration">
+
+      <label for="channeltitle">Channel Title</label>
+      <input id="channeltitle" type="text" formControlName="channeltitle">
+
+        <p>Select Audience Type</p>
+        <input type="radio" id="kids" formControlName="kids" >
+        <label for="kids">Kids</label><br>
+        <input type="radio" id="notkids" formControlName="notkids" >
+        <label for="notkids">Not Kids</label><br>
+          
+        <p>Age Restriction</p>
+        <input type="radio" id="egthn" formControlName="egthn" >
+        <label for="egthn">Below 18</label><br>
+        <input type="radio" id="notegthn" formControlName="notegthn" >
+        <label for="notegthn">Above 18</label><br>
+
+        <select class="customselect"  (change)=" changeVideoCategory($event)"  formControlName="videoCategory">
+            <option value="" disabled>Select Video Category</option>
+            <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+        </select>
+  
+    </div >
+      <button type="submit">Submit</button>
+      
+      </form>
+      <p>Form Value: {{ studioUploadForm.value | json }}</p>
+     
+    </div>
+      

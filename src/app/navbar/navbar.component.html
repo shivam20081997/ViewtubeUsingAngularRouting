@@ -1,0 +1,70 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === true">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list color="primary">
+      <a mat-list-item href="#"><mat-icon>home</mat-icon> Home</a>
+      <a mat-list-item href="#"><mat-icon>explore</mat-icon>Explore</a>
+      <a mat-list-item href="#"><mat-icon>subscriptions</mat-icon>Subscriptions</a>
+      <a mat-list-item href="#"><mat-icon>video_library</mat-icon>Library</a>
+      <a mat-list-item href="#"><mat-icon>history</mat-icon>History</a>
+      <hr style="width:100%;text-align:left;margin-left:0">
+      <p>Sign in to watch videos, comment and subscribe</p>
+      
+     <button mat-raised-button color="primary">Sign-in</button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="true ">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Viewtube</span>
+      <div id="search-box">
+      
+        <input matInput type="text" placeholder="Search">
+      
+        <a href="#"><mat-icon style="color:white;">search</mat-icon></a>
+          <a href="#"><mat-icon style="color:white;">mic</mat-icon></a>
+    </div>
+    <div id="othericons">
+     <a href="#"><mat-icon style="color:white;">notifications</mat-icon></a>
+      <button mat-icon-button (click)="onClickVideoButton()"><mat-icon style="color:white;">video_call</mat-icon></button>
+      <a href="#"><mat-icon style="color:white;">apps</mat-icon></a>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>help</mat-icon>
+          <span>Help</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+        <button mat-menu-item disabled >
+          <mat-icon>feedback</mat-icon>
+          <span>Send feedback</span>
+        </button>
+      </mat-menu>
+    </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+ 
+   <app-chips-bar></app-chips-bar>
+   <app-video-content></app-video-content>
+   
+  </mat-sidenav-content>
+</mat-sidenav-container>

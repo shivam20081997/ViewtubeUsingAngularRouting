@@ -1,0 +1,52 @@
+
+<div class="main">
+  
+<form [formGroup]="livestreamForm" (ngSubmit)="onSubmit()">
+        
+  <label for="livestream-title">Live Stream Title</label>
+  <input id="livestream-title" type="text" formControlName="livestreamTitle">
+      
+  <div formGroupName="event">
+      <label for="start-date">Event Start Date(dd/mm/yy)</label>
+      <input id="start-date" type="text" formControlName="startDate">
+    
+      <label for="start-time">Event Start Time</label>
+     
+       <select class="custom-select"  (change)=" changestartTime($event)"  formControlName="startTime">
+          <option value="" disabled>Select Start Time</option>
+          <option *ngFor="let time of Times" [ngValue]="time">{{time}}</option>
+      </select>
+    
+      <label for="end-date">Event End Date</label>
+      <input id="end-date" type="text" formControlName="endDate">
+    
+      <label for="end-time">Event End Time</label>
+     
+      <select class="custom-select"  (change)=" changeEndTime($event)"  formControlName="endTime">
+          <option value="" disabled>Select End Time</option>
+          <option *ngFor="let time of Times" [ngValue]="time">{{time}}</option>
+      </select>
+
+      <label for="details">Event Details</label>
+      <input id="details" type="text" formControlName="details">
+  </div>
+    
+    <div formArrayName="guest">
+      <button (click)="addGuest()" type="button">+ Add another guest</button>
+    
+      <div *ngFor="let guest of guests.controls; let i=index">
+       
+        <label for="guest-{{ i }}">Guest</label>
+        <input id="guest-{{ i }}" type="text" [formControlName]="i">
+      </div>
+    </div>
+  
+  
+ 
+  <button type="submit">Submit</button>
+  
+  </form>
+  <p>Form Value: {{ livestreamForm.value | json }}</p>
+ 
+</div>
+  
